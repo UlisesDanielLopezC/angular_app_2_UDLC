@@ -1,0 +1,45 @@
+<body class="chatBG p-3">
+  <div class="content" role="main">
+    <div class="container text-warning position-relative">
+      <div class="row">
+        <h2
+          class="card col-12 col-sm-5 rounded text-center top-0 start-50 translate-middle-x bg-dark border border-success p-1">
+          Comunicados!</h2>
+      </div>
+      <input type="hidden" #selection>
+      <div class="row">
+        <div class="col-2">
+          <div class="card-container">
+            <button class="card bg-dark text-warning border border-success card-small mb-5 p-1" (click)="selection.value = 'R1'"
+              tabindex="0">
+              <span>Recientes 📒!</span>
+            </button>
+
+            <button class="card bg-dark text-warning border border-success card-small mb-5 p-1" (click)="selection.value = 'T1'"
+              tabindex="0">
+              <span>Todos 🗓️!</span>
+            </button>
+
+            <button class="card bg-dark text-warning border border-success card-small mb-5 p-1" (click)="selection.value = 'P1'"
+              tabindex="0">
+              <span>Proximos 📰!</span>
+            </button>
+
+            <button class="card bg-dark text-warning border border-success card-small mb-5 p-1" (click)="selection.value = 'F1'"
+              tabindex="0">
+              <span>FAQ 📝!</span>
+            </button>
+          </div>
+        </div>
+        <!-- Terminal -->
+        <div class="terminal col-10" [ngSwitch]="selection.value">
+          <pre *ngSwitchDefault><app-intro></app-intro></pre>
+          <pre *ngSwitchCase="'T1'"><app-todos></app-todos></pre>
+          <pre *ngSwitchCase="'P1'"><app-prox></app-prox></pre>
+          <pre *ngSwitchCase="'F1'"><app-faq></app-faq></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</body>
